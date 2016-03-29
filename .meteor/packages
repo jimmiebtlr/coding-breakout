@@ -21,7 +21,7 @@ aldeed:simple-schema
 aldeed:collection2
 edgee:slingshot
 kadira:dochead
-jimmiebtlr:slingshot-cloudinary
+jimmiebtlr:slingshot-cloudinary@0.0.3
 anti:fake
 check
 reywood:bootstrap3-sass

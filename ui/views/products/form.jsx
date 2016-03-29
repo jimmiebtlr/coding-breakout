@@ -30,7 +30,8 @@ class ProductForm extends React.Component {
         console.error('Error uploading', error);
       } else {
         const key = _.findWhere(uploader.instructions.postData, { name: 'public_id' }).value;
-        Products.update({ _id: productId }, { $set: { image: key } });
+        // The keys I used auto prefix meteor-templates
+        Products.update({ _id: productId }, { $set: { image: 'meteor-templates/' + key } });
       }
     });
 

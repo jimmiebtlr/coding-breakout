@@ -26,3 +26,4 @@ Future
 - Placeholders while images load
 - Spinners while subscription is in process
 - Pagination/infinite scroll
+- Refactor index page
