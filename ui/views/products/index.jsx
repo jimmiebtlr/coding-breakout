@@ -98,12 +98,11 @@ const getProducts = (props, onData) => {
   // Default sort to amount asc
   let sortBy = 'amount';
   let sortDir = 1;
-  if (props.location && props.location.query) {
+  if (props.location && props.location.query && props.location.query['sort-by']) {
     const query = props.location.query;
     sortBy = query['sort-by'];
     sortDir = parseInt(query['sort-dir']);
   }
-  console.log( sortDir );
 
   const sort = {};
   sort[sortBy] = sortDir;

@@ -26,10 +26,12 @@ class ProductForm extends React.Component {
     const productId = Products.insert(model);
     const uploader = new Slingshot.Upload('images');
     uploader.send(this.refs.image.files[0], function imgUpload(error) {
+      console.log( productId);
       if (error) {
         console.error('Error uploading', error);
       } else {
         const key = _.findWhere(uploader.instructions.postData, { name: 'public_id' }).value;
+        console.log( key);
         Products.update({ _id: productId }, { $set: { image: key } });
       }
     });
