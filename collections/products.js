@@ -49,6 +49,7 @@ const ProductSchema = new SimpleSchema({
     // Image is a string that represents a key in cloudinary
     // Absolute url's should not be stored for images/attachments, pretty much ever.
     type: String,
+    optional: true,
   },
 });
 

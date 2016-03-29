@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router';
 
 import ProductsIndex from '/ui/views/products/index';
+import ProductsForm from '/ui/views/products/form';
 
 if (Meteor.isClient) {
   Meteor.startup(() => {
@@ -11,6 +12,8 @@ if (Meteor.isClient) {
     document.body.appendChild(root);
     ReactDOM.render((<Router history={browserHistory}>
       <Route path="/" component={ProductsIndex}/>
+      <Route path="/products/new" component={ProductsForm}/>
+      <Route path="/products/:id/edit" component={ProductsForm}/>
     </Router>), root);
   });
 } else {

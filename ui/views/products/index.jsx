@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import shallowCompare from 'react-addons-shallow-compare';
 import Products from '/collections/products';
 import { composeWithTracker } from 'react-komposer';
@@ -19,8 +20,50 @@ class Index extends React.Component {
 
   render() {
     const { products } = this.props;
+    const { router } = this.context;
 
+    const changeSort = (sortBy, sortDir) => {
+      return () => {
+        return router.replace(`/?sort-dir=${sortDir}&sort-by=${sortBy}`);
+      };
+    };
+
+    const { sortBy, sortDir } = this.props;
+
+    /*
+     * I think ideally I would do the link to sorting
+     * through js and on-click instead of the router
+     * link tag.
+     */
     return (<Container>
+      <div className="well">
+        <Link to="/products/new">
+          <button className="btn btn-primary">
+            Create product
+          </button>
+        </Link>
+      </div>
+
+      <div className="well">
+        <button className="btn btn-primary"
+          onClick={changeSort('name', sortDir)}
+        >
+          Sort by name
+        </button>
+        <button
+          className="btn btn-primary"
+          onClick={changeSort('amount', sortDir)}
+        >
+          Sort by amount
+        </button>
+        <button
+          className="btn btn-primary"
+          onClick={changeSort(sortBy, (sortDir < 0 ? 1 : -1))}
+        >
+          {sortDir ? 'ASC' : 'DESC'}
+        </button>
+      </div>
+
       <Row>
         {_.map(products, (p) => {
           return (<Col xs={12} sm={4} md={3} key={p._id}>
@@ -30,8 +73,8 @@ class Index extends React.Component {
               </CardMedia>
 
               <CardData>
+                <h2>{p.name}</h2>
                 <Money amount={p.amount}/>
-                <h2>{p.title}</h2>
               </CardData>
             </Card>
           </Col>);
@@ -45,18 +88,41 @@ Index.propTypes = {
   products: React.PropTypes.array.isRequired,
 };
 
+Index.contextTypes = {
+  router: React.PropTypes.object.isRequired,
+};
+
 const getProducts = (props, onData) => {
+  console.log(props.location);
+
+  // Default sort to amount asc
+  let sortBy = 'amount';
+  let sortDir = 1;
+  if (props.location && props.location.query) {
+    const query = props.location.query;
+    sortBy = query['sort-by'];
+    sortDir = parseInt(query['sort-dir']);
+  }
+  console.log( sortDir );
+
+  const sort = {};
+  sort[sortBy] = sortDir;
+
   if (props && Meteor.isClient) {
     const { query } = props;
     Meteor.subscribe(
       'products/get',
       (query ? query : {}),
-      {}
+      { sort }
     );
   }
 
-  const products = Products.find().fetch();
-  onData(null, { products });
+  const products = Products.find({}, { limit: 10, sort }).fetch();
+  onData(null, {
+    products,
+    sortBy,
+    sortDir,
+  });
 };
 
 
