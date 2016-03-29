@@ -13,6 +13,7 @@ Present
   - This is implemented as a url param, meaning a user can share search results
 - Includes basic seed data
 - Includes new product form
+- Linting.  This increases in value over time
 
 
 Future
@@ -21,7 +22,7 @@ Future
 - Responsive image sizes - Cloudinary is the first step for this
 - Grid items should be fixed height
 - Images should be full width
-- Product edit
+- Product edit page
 - Form validation
 - Placeholders while images load
 - Spinners while subscription is in process
