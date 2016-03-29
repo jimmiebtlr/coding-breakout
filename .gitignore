@@ -2,3 +2,5 @@ node_modules/
 .meteor/local
 settings.*.json
 !settings.example.json
+.meteor/local
+.meteor/meteorite
