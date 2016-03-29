@@ -18,16 +18,11 @@ Slingshot.fileRestrictions('images', {
 if (Meteor.isServer) {
   Slingshot.createDirective('images', Slingshot.Cloudinary, {
     authorize() {
-      if (!this.userId) {
-        const message = 'Please login before posting files';
-        throw new Meteor.Error('Login Required', message);
-      }
-
       return true;
     },
 
     key() {
-      return this.userId + Meteor.uuid();
+      return Meteor.uuid();
     },
   });
 }
