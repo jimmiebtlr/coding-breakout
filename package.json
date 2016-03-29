@@ -1,0 +1,19 @@
+{
+  "name": "coding-breakout",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "meteor-node-stubs": "~0.2.0",
+    "nuka-carousel": "~1.1.1",
+    "react": "~0.14.7",
+    "react-dom": "~0.14.7",
+    "react-komposer": "~1.4.1",
+    "react-router": "~2.0.1",
+    "react-router-ssr": "~1.2.0",
+    "react-tap-event-plugin": "~0.2.2",
+    "react-addons-shallow-compare": "~0.14.7",
+    "load-script": "~1.0.0"
+  }
+}
