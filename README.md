@@ -19,4 +19,6 @@ Future
 - Responsive image sizes - Cloudinary is the first step for this
 - Grid items should be fixed height
 - Images should be full width
+- Product edit
+- Form validation
 

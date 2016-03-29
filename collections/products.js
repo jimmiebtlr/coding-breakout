@@ -11,7 +11,7 @@ const Products = new Mongo.Collection('Products');
  * Their service is awesome, the libraries are at times poor though.
  */
 Slingshot.fileRestrictions('images', {
-  allowedFileTypes: ['image/png', 'image/jpg'],
+  allowedFileTypes: ['image/png', 'image/jpg', 'image/jpeg'],
   maxSize: 1024 * 1024 * 50,
 });
 
