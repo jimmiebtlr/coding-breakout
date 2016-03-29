@@ -2,6 +2,8 @@ Time taken ~ 3.5 hours.  I'll refund the amount over 1 hour.
 
 There is quite a few things needed for a true quality implementation of the given task, this repository is a subset.
 
+I probably didn't focus nearly as much on actual appearances as I should have, doing to much on the backend.
+
 
 Present
 - Cloudinary for uploads.  Allows easy responsive sizes and quite a bit more.
@@ -21,4 +23,6 @@ Future
 - Images should be full width
 - Product edit
 - Form validation
-
+- Placeholders while images load
+- Spinners while subscription is in process
+- Pagination/infinite scroll
